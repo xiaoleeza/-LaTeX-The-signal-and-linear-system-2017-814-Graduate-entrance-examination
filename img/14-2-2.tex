@@ -1,0 +1,39 @@
+% !Mode:: "TeX:UTF-8"
+\documentclass[UTF8,nofonts]{ctexart}
+\usepackage{multido}
+%\usepackage[UTF8,cap,nofonts]{ctex} %,fancyhdr,hyperref winfonts,nofonts
+\setmainfont{Adobe Garamond Pro} % could be changed to "TeXGyrePagella"or "Times New Roman PS Std"
+  \setsansfont{Myriad Pro}
+  \setmonofont{Consolas}
+% set up fonts
+  \setCJKmainfont[BoldFont={Adobe Heiti Std},ItalicFont={Adobe Kaiti Std}]{Adobe Song Std}
+  \setCJKsansfont{Adobe Heiti Std}
+  \setCJKmonofont{Adobe Kaiti Std}
+  \setCJKfamilyfont{song}{Adobe Song Std}
+  \setCJKfamilyfont{hei}{Adobe Heiti Std}
+  \setCJKfamilyfont{fs}{Adobe Fangsong Std}
+  \setCJKfamilyfont{kai}{Adobe Kaiti Std}
+\newcommand{\song}{\CJKfamily{song}}    % 宋体
+\newcommand{\fs}{\CJKfamily{fs}}        % 仿宋体
+\newcommand{\kaishu}{\CJKfamily{kai}}      % 楷体
+\newcommand{\hei}{\CJKfamily{hei}}      % 黑体
+\usepackage[siunitx]{circuitikz}
+\usepackage{pstricks}
+\usepackage{pst-node,pst-plot,pst-sigsys}
+
+\usepackage{pst-circ}
+\begin{document}
+\thispagestyle{empty}
+
+\begin{pspicture}(-2.3,-.5)(2.3,1.2)
+  \psaxes[labels=none,ticks=none,labelFontSize=\scriptstyle]{->}(0,0)(-2.3,0)(2.3,1.2)[$\scriptstyle \omega$,0][$\scriptstyle |F(j\omega)|$,0]
+
+         \psline(-2,0)(-1,.7)(1,.7)(2,0)
+\pssignal(-.15,.8){a}{$\scriptstyle 1$}
+\psxTick(0){\scriptstyle 0}
+\psxTick(-2){\zihao{5} -2\pi}
+\psxTick(2){\zihao{5} 2\pi}
+\psxTick(-1){\zihao{5} -\pi}
+\psxTick(1){\zihao{5} \pi}
+\end{pspicture}
+\end{document}

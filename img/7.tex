@@ -1,0 +1,58 @@
+% !Mode:: "TeX:UTF-8"
+\documentclass{article}
+\usepackage{amsmath,amssymb}
+\usepackage{pst-blur}
+\usepackage{pstricks-add}
+\usepackage[siunitx]{circuitikz}
+\usepackage{pstricks}
+\usepackage{pst-node,pst-plot,pst-sigsys}
+
+\usepackage{pst-circ}
+\usepackage[UTF8,cap,nofonts]{ctex} %,fancyhdr,hyperref winfonts,nofonts
+
+% set up fonts
+\setmainfont{Adobe Garamond Pro} % could be changed to "TeXGyrePagella"or "Times New Roman PS Std"
+  \setsansfont{Myriad Pro}
+  \setmonofont{Consolas}
+  \setCJKmainfont[BoldFont={Adobe Heiti Std},ItalicFont={Adobe Kaiti Std}]{Adobe Song Std}
+  \setCJKsansfont{Adobe Heiti Std}
+  \setCJKmonofont{Adobe Kaiti Std}
+  \setCJKfamilyfont{song}{Adobe Song Std}
+  \setCJKfamilyfont{hei}{Adobe Heiti Std}
+  \setCJKfamilyfont{fs}{Adobe Fangsong Std}
+  \setCJKfamilyfont{kai}{Adobe Kaiti Std}
+\newcommand{\song}{\CJKfamily{song}}    % 宋体
+\newcommand{\fs}{\CJKfamily{fs}}        % 仿宋体
+\newcommand{\kai}{\CJKfamily{kai}}      % 楷体
+\newcommand{\hei}{\CJKfamily{hei}}      % 黑体
+
+\definecolor{Blue}{rgb}{1.,0.75,0.8}
+\pagestyle{empty}
+\begin{document}
+\begin{pspicture}(-5.5,-1)(6,1)
+ \psset{style=RoundCorners,gratioWh=1.25}
+
+ %---Defining blocks---
+ \pssignal(-5,0){x}{$\delta(k)$}
+ \psfblock(-3,0){H3}{$H_3(k)$}
+ \dotnode(-1.5,0){dot}
+ \psfblock(1.2,.75){H1}{$H_1(k)$}
+ \psfblock(0,-.75){H11}{$H_1(k)$}
+ \psfblock(2.4,-.75){H2}{$H_2(k)$}
+ \pscircleop(3.9,0){oplus}
+ \pssignal(5.5,0){h}{$h(k)$}
+
+ %---Connecting blocks---
+ \psset{style=Arrow}
+ \ncline{->}{x}{H3}
+ \ncline{->}{H3}{dot}
+ \ncangle[angleA=90,angleB=180]{dot}{H1}
+ \ncangle[angleA=-90,angleB=180]{dot}{H11}
+ \ncline{->}{H11}{H2}
+ \ncangle[angleB=90]{H1}{oplus}
+ \ncangle[angleB=-90]{H2}{oplus}
+ \ncline{->}{oplus}{h}
+ \nput{45}{oplus} {$\scriptstyle -$}
+ \nput{-45}{oplus} {$\scriptstyle +$}
+\end{pspicture}
+\end{document}

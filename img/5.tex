@@ -1,0 +1,49 @@
+% !Mode:: "TeX:UTF-8"
+\documentclass{article}
+\usepackage{amsmath,amssymb}
+\usepackage{pst-blur}
+\usepackage{pstricks-add}
+\usepackage[siunitx]{circuitikz}
+\usepackage{pstricks}
+\usepackage{pst-node,pst-plot,pst-sigsys}
+
+\usepackage{pst-circ}
+\usepackage[UTF8,cap,nofonts]{ctex} %,fancyhdr,hyperref winfonts,nofonts
+
+% set up fonts
+\setmainfont{Adobe Garamond Pro} % could be changed to "TeXGyrePagella"or "Times New Roman PS Std"
+  \setsansfont{Myriad Pro}
+  \setmonofont{Consolas}
+  \setCJKmainfont[BoldFont={Adobe Heiti Std},ItalicFont={Adobe Kaiti Std}]{Adobe Song Std}
+  \setCJKsansfont{Adobe Heiti Std}
+  \setCJKmonofont{Adobe Kaiti Std}
+  \setCJKfamilyfont{song}{Adobe Song Std}
+  \setCJKfamilyfont{hei}{Adobe Heiti Std}
+  \setCJKfamilyfont{fs}{Adobe Fangsong Std}
+  \setCJKfamilyfont{kai}{Adobe Kaiti Std}
+\newcommand{\song}{\CJKfamily{song}}    % 宋体
+\newcommand{\fs}{\CJKfamily{fs}}        % 仿宋体
+\newcommand{\kai}{\CJKfamily{kai}}      % 楷体
+\newcommand{\hei}{\CJKfamily{hei}}      % 黑体
+
+\definecolor{Blue}{rgb}{1.,0.75,0.8}
+\pagestyle{empty}
+\begin{document}
+\begin{pspicture}(0,-2)(7,2)
+  \psset{style=RoundCorners}
+
+  %--- Defining blocks ---
+  \pssignal(-.5,0){x}{}
+  \psblock(1.5,0){L}{低通滤波器}
+  \pscircleop[operation=times](3.75,0){otimes2}
+  \pssignal(3.75,-1){c2}{$s(t)$}
+  \psblock(6,0){H}{带通滤波器}
+  \pssignal(8,0){y}{}
+
+  %--- Connecting blocks ---
+  \psset{style=Arrow}
+  \nclist{ncline}[naput]{x,L,otimes2 $x(t)$,H $y(t)$,y}
+  \nclist{ncline}[naput]{c2,otimes2}
+
+\end{pspicture}
+\end{document}
