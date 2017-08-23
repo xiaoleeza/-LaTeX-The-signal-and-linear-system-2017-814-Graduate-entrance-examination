@@ -1,4 +1,4 @@
-\documentclass[11pt]{ctexart}
+\documentclass[11pt,twoside]{ctexart}
 \usepackage[pdfborder=0 0 1]{hyperref}
 \hypersetup{
     pdfauthor={Tsingpo Lee},
@@ -117,7 +117,6 @@
 {f(4t-5)}
 \newpage
 \vspace{3em}
-\newgeometry{a3paper,twocolumn,landscape,hmargin={1.3cm,3.5cm},vmargin={1.5cm,1.5cm},footskip=0.75cm,headsep=0.25cm}\savegeometry{back}
 \item  已知某线性时不变系统，当输入信号$f(t)=(e^{-t}+e^{-3t})\varepsilon(t)$时，其零状态响应是$y(t)=(2e^{-t}-2e^{-4t})\varepsilon(t)$，则该系统的频率响应为
 \xxs
 {-\dfrac{3}{2}\left(\dfrac{1}{j\omega+4}+\dfrac{1}{j\omega+2}\right)}
@@ -152,7 +151,6 @@
 (2)$\displaystyle y=f(t)*\frac{\sin t}{t}$
 \vfill
 \newpage
-\restoregeometry
 \vspace*{18em}
 \item (8分)已知信号$f_1(t)=e^{-3t}\varepsilon(t)$，信号$f_2(t)=\varepsilon(t-3)-\varepsilon(t-5)$，试计算$f_1(t)$与$f_2(t)$的卷积积分$f(t)=f_1(t)*f_2(t)$。
 \vfill\newpage
@@ -161,7 +159,7 @@
 (1)系统的系统函数$H(s)$；
 
 (2)如果$f(t)=t\varepsilon(t)$，求零状态响应$y_{zs}(t)$。
-\vfill\newpage\loadgeometry{back}
+\vfill\newpage%\loadgeometry{back}
 \item (15分)一个LTI离散时间系统可由如下养分方程描述
 \[2y(k)-5y(k-1)+2y(k-2)=3f(k-1)\]
 

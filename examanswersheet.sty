@@ -184,7 +184,7 @@
 %
 \usetikzlibrary{calc}
 \newcommand{\mifengxianaaa}{
-\ifthenelse{\value{page} = 1 \or \value{page} =5 \or \value{page} =9 \or \value{page} =13  \or \value{page} =17  \or \value{page} =21}%判断是否奇数页
+\ifthenelse{\value{foo} = 1 \or \value{foo} =5 \or \value{foo} =9 \or \value{foo} =13  \or \value{foo} =17  \or \value{foo} =21}%判断是否奇数页
 {%B4正面密封线、座号
 \begin{tikzpicture}[remember picture,overlay]
 \path 	(current page.south east) coordinate (a0);
@@ -224,13 +224,23 @@
 %
 %	边距、纸张设置
 %
+%引用fox计数器最大值
+\def\lastfox@putlabel{%
+   \immediate\write\@auxout{%
+     \string\newlabel{LastFox}{{\@arabic\c@fox}{}{}{}{}}}}
+\AtEndDocument{\lastfox@putlabel}
+
+\newcounter{foo}
+\newcounter{fox}
+\addtocounter{foo}{1}
+
 \newcommand{\mifengxian}{
 \geometry{a3paper,twocolumn,landscape,hmargin={3.5cm,1.3cm},vmargin={1.5cm,1.5cm},footskip=0.75cm,headsep=0.25cm}
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
 \setlength{\columnseprule}{0.4pt}
 \setlength{\columnsep}{1.3cm}
-\fancyfoot[CE,CO]{{\kaishu{}第}\thepage{\kaishu{}页}~/~{\kaishu{}共}~\pageref{LastPage}~{\kaishu{}页}\hspace*{18cm}{\kaishu{}第}\stepcounter{page}\thepage{\kaishu{}页}~/~{\kaishu{}共}~\pageref{LastPage}~{\kaishu{}页}\newgeometry{a3paper,twocolumn,landscape,hmargin={1.3cm,3.5cm},vmargin={1.5cm,1.5cm},footskip=0.75cm,headsep=0.25cm}}
+\fancyfoot[CE,CO]{{\kaishu{}第}\refstepcounter{fox}\thefoo\refstepcounter{foo}{\kaishu{}页}~/~{\kaishu{}共}~\ref{LastFox}~{\kaishu{}页}\hspace*{18cm}{\kaishu{}第}\refstepcounter{fox}\thefoo\refstepcounter{foo}{\kaishu{}页}~/~{\kaishu{}共}~\ref{LastFox}~{\kaishu{}页}\newgeometry{a3paper,twocolumn,landscape,hmargin={1.3cm,3.5cm},vmargin={1.5cm,1.5cm},footskip=0.75cm,headsep=0.25cm}}
 \fancyhead[CE,CO]{\mifengxianaaa}
 }
 %--------------------页眉页脚关---
