@@ -16,7 +16,7 @@
 %\SetWatermarkScale{1}
 %\SetWatermarkLightness{0.75}
 \usetikzlibrary{graphs}
-\usetikzlibrary{calc}
+
 \def\blob#1#2{\draw[blue,fill,rounded corners=#1*3mm] (#2) +($(0:#1*2+#1*rnd)$)
 		\foreach \a in {20,40,...,350} {  -- +($(\a: #1*2+#1*rnd)$) } -- cycle;}
 \usepackage{eso-pic}

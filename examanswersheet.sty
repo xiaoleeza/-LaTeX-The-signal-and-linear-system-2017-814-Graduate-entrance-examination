@@ -182,8 +182,9 @@
 %
 %	试卷样式1:传统B4正反面，根据奇偶页自动排版。
 %
+\usetikzlibrary{calc}
 \newcommand{\mifengxianaaa}{
-\ifthenelse{\isodd{\value{page}}}%判断是否奇数页
+\ifthenelse{\value{page} = 1 \or \value{page} =5 \or \value{page} =9 \or \value{page} =13  \or \value{page} =17  \or \value{page} =21}%判断是否奇数页
 {%B4正面密封线、座号
 \begin{tikzpicture}[remember picture,overlay]
 \path 	(current page.south east) coordinate (a0);
